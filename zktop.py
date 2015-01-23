@@ -81,7 +81,7 @@ class ZKServer(object):
         self.server_id = server_id
         self.host, self.port = server.split(':')
         try:
-            stat = send_cmd(self.host, self.port, 'stat\n')
+            stat = send_cmd(self.host, self.port, 'stat')
 
             sio = StringIO.StringIO(stat)
             line = sio.readline()
@@ -143,7 +143,7 @@ def wakeup_poller():
 
 def reset_server_stats(server):
     host, port = server.split(':')
-    send_cmd(host, port, "srst\n")
+    send_cmd(host, port, "srst")
 
 server_id = 0
 class StatPoller(threading.Thread):
